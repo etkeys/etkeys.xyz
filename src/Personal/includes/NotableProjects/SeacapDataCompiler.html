@@ -1,0 +1,156 @@
+<h3>Abstract</h3>
+<p>
+	A customer, who shall be referred to as “The Company”, mandated that design 
+	discipline personnel compile lists of all the piece parts needed to build a 
+	product and submit these parts to the contracts and pricing group so an estimate 
+	could be made for the cost of parts and labor to build a final product. An 
+	initial attempt was made to automate the data compiling process which, in 
+	addition to the base design data, added previous purchase information, planning 
+	scheduling information, and calculated weight for multi-piece part assemblies. 
+	The initial automation was built using excel macros and was a surprise that it 
+	worked given the complexity. However, the only production run of this system 
+	was plagued with issues: ambiguous errors, difficult workarounds, heavy use of 
+	user interaction, over-reliance on deprecated data retrieval application programming 
+	interfaces [APIs], multiple production configurations, no multi-user support, 
+	poor memory management, non-atomic operations, poor feedback to user, and the 
+	list goes on. The project fell to me and after several months I provided a superior 
+	solution that was praised for massive improvements and savings over it’s precursor.
+</p>
+
+<h3>Keywords</h3>
+<p>Multi-threaded, multi-user, atomic operations, .NET Framework, data transformation, ODBC</p>
+
+<h3>Details</h3>
+<p>
+	A system was needed that merged design data, planning data, previous purchase 
+	information, as well as perform other quantity and weight calculations. All of 
+	this data was to be provided in one document in a specific format for each 
+	deliverable to the contracts and pricing group so they could put together an 
+	estimate. There were over 12,000 deliverables that needed to be processed which 
+	collectively accounted for 3.5 million line items. An initial system was developed 
+	and released to production but had some major problems [problems listed in the 
+	abstract]. The use of the initial system was in place for six months and six 
+	client interfaces, one for each design discipline. Due to how the system was 
+	structured only one user per discipline could use the interface at a time. 
+	This system was unstable and required constant oversite to handle crashes and 
+	the manual movement of output files through the various stages of processing. 
+	These factors led to high budget overruns and due to an upcoming software change, 
+	the system was not going to be usable because a dependency was no longer going 
+	to be supported. The initial system, for all of it faults, did succeed but 
+	needed to be replaced.
+</p>
+<p>
+	I was brought onto the project at the very end of the initial system’s life. 
+	The previous development team was leaving the company and a replacement team was 
+	needed. Until the production effort was completed, I acted as an observer, mostly. 
+	I listed to user feedback and asked questions about how the system operated, what 
+	specific functions did it perform. I even assisted in debugging crashes on occasion. 
+	I observing for a few weeks before work was completed and the system was “shut off”. 
+	Shortly afterwards an official kickoff meeting was held to layout the requirements 
+	for a replacement system. It’s important to note at this point that this project 
+	was not going to be done by an official IT internal development team as the cost 
+	and time to completion would’ve been to high. The initial system was developed by a 
+	couple engineers, and I felt confident in my ability, even though I had only been 
+	programming for a few months. The general requirements were this:
+</p>
+<ol>
+	<li>All business rules from the initial system must implemented. The final products 
+		are to be indistinguishable for the products produced by the initial system.</li>
+	<li>The new system must allow for multiple user per discipline to use the system at 
+		any given time.</li>
+	<li>The new system must handle more of the data marshalling between the various 
+		processing stages, limiting the different points users have to handle the data.</li>
+	<li>The new system must use a new method of data retrieval as the old method is no 
+		longer support and no longer available. The new method must also be a long lived 
+		method, a process that could be used for many more years.</li>
+	<li>The new system must tightly control and provide validation for more of the user 
+		supplied reference data, keeping references consistent and notation uniform.</li>
+	<li>The new system should be more fault tolerant and if an issue do occur, feedback 
+		should be more clear to users.</li>
+	<li>Documentation about how to use the new system must be provided.</li>
+</ol>
+<p>
+	The initial budget to design, develop, test, and distribute the new system, code named 
+	“SeaCAP Data Compiler [SDC]”, was 800 man hours and I was to be the lead and sole 
+	developer. My initial approach was to convert all the Microsoft Excel macros and rule 
+	tables to Microsoft Access [Access] Visual Basic for Applications [VBA] code and Access 
+	tables and stored queries. I developed a graphical user interface [GUI] using Access 
+	form objects that provided a more intuitive interface for users. Sadly, I must admit, 
+	that due to my inexperience, I underestimated usability Access, something that wasn’t 
+	apparent until testing. The SDC worked fantastically at a small scale, but suffered 
+	performance issues as it was scaled up, so much so that it became unstable and prone to 
+	fatal crashes. To add to that, the new data retrieval method that developed was very 
+	similar to the old method in that is was too dependant on API where long term support 
+	couldn’t be guaranteed and API configuration had a high resistance to change. At the end 
+	of it all, the SDC was released in a small scale production run for two weeks, enough 
+	time to produce a handful of deliverables. Fortunately, only a small amount of deliverables 
+	were needed. The SDC was shelved after its short runtime and project ended at 200 hours 
+	over budget, but a good deal of feedback from the customer and users about how the system 
+	could be improved. This would not be the end of the SDC.
+</p>
+<p>
+	Two years later, I was approached by the customer and asked to resurrect the SDC. I 
+	considered the previous iteration of the SDC a failure for multiple reasons, most of 
+	which pointed back to the use of Access and difficult APIs. I was approved to apply 
+	changes based on feedback and observations based on the use of the last iteration. My 
+	project budget for this effort was 750 hours. Having had a couple more years of development 
+	and exposure to new tools, I proposed that the system move away from Access as the core 
+	processing platform in favor of Microsoft’s .NET Framework. The following lists how I 
+	overcame issues with the initial system and previous iteration of the SDC:
+</p>
+<ol>
+	<li>The new SDC was made available to multiple users at a single time as the business 
+		logic was extracted and placed into a compiled executable that could be copied to 
+		and executed on the user’s local machine.</li>
+	<li>Even more per user throughput was achieved by leveraging .NET’s multithreading 
+		components. In fact, there was a risk that multiple users spooling multiple threads 
+		each would affect the stability the network servers so a means of throttling maximum 
+		threads per uses was implemented to reduce the threat to the network.</li>
+	<li>The processing time per deliverable was reduced to an average observed start to finish 
+		time of approximately three minutes, down from an average of 30 minutes (anecdotal).</li>
+	<li>Processing of a deliverable was made atomic and more fault tolerant. Most errors 
+		occurred on worker threads which allowed the main thread to be dissociated from errors 
+		that would have otherwise been fatal. If an error occurred, any changes to the initial 
+		data were discarded leaving the initial data in unmodified state. The worker thread 
+		would be terminated and restarted by the main thread with a new target deliverable to process.</li>
+	<li>Feedback to users was made more clear as the exception detail provided by the .NET Framework 
+		could provide more details to summarize the cause of issues.</li>
+	<li>Single production configuration was achieved as the compiled executable was made intelligent 
+		enough to know what discipline a particular deliverable belonged, how it should be processed, 
+		and where it was to be retrieved and placed during execution.</li>
+	<li>A long term data retrieval method was developed that abandoned the idea of relying on data 
+		warehouse reporting APIs (IBM Cognos), and insteaded used direct data warehouse queries using 
+		SQL Server ODBC API. This method was approved for use by the responsible data warehouse 
+		IT management group.</li>
+	<li>.NET memory management was much more advanced which kept the compiled executable more stable 
+		and reliable. The ability to leverage 64bit operations also added more to the stability of the 
+		executable as it could accommodate larger datasets.</li>
+	<li>User supplied reference data was made more consistent and uniform as users had to supply 
+		the reference data through an interface that applied validation logic rather than the users 
+		having direct access to the data store.</li>
+	<li>The new SDC also greatly reduced the opportunities that a user could affect the data between 
+		start and finish because the user never had direct access to the data store. All access to data 
+		in the data store was done through an interface, obscuring the true data store location the 
+		means by which the SDC managed to location of objects within the data store. Admin users of the 
+		SDC did have direct access to the data store and the means to update the managed locations if 
+		the need arose.</li>
+</ol>
+<p>
+	This second and final version of the SDC was delivered on time and 50 hours under budget. The 
+	first production run of the application lasted for two months and was a huge cost savings over the 
+	previous systems. To date, this application has been in use for two year has saved the customer and 
+	The Company millions by reducing the man hours needed to manage processing of the application and 
+	rework hours due to inconsistent reference data.
+</p>
+
+<h3>Reflection</h3>
+<p>
+	Reflecting back on this project, it was the project that caused me to grow the most. I was on my own. 
+	Technically a junior developer who didn’t know much about the system he was working in. I had to 
+	research knew concepts and correct bad practices that I had formed. I met many hurdles: design problems, 
+	ambiguous and evolving requirements, lack of knowledge from domain experts, constrained budget, and 
+	limited resources, but I overcame them all. When asked, I always say I hate the SDC, but in truth I don’t.
+</p>
+
+
+	

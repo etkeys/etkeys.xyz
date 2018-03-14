@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Erik T. Keys</title>
+		<link rel="stylesheet" 
+		  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+		  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+		  crossorigin="anonymous">
+		<link rel="stylesheet" href="css/main.css"/>
+
+
+		<script src="scripts/general.js"></script>
+		<script src="https://www.w3schools.com/lib/w3.js"></script>
+		<script src="https://apis.google.com/js/platform.js" async defer></script>
+	</head>
+	<body id="outercontainer">
+		<div w3-include-html="includes/banner.html"></div>
+		
+		<!-- page content -->
+		<div class="container pagecontentbg">
+			
+			<div w3-include-html="includes/navbarleft.html"></div>
+			
+			<!-- content -->
+			<div class="row contentheader">
+				<div class="col-md-12 col-sm-12"><h2>Notable Projects</h2></div>
+			</div>
+			<div class="row content tabcollection">
+				<div class="col-md-12 col-sm-12">
+					<button id="defaultOpen" class="btn tab" onclick="openTabContent(event,'Seacap')">SeaCAP Data Compiler</button>
+				</div>
+			</div>
+			<div class="row content">
+				<div class="col-md-12 col-sm-12">
+					<br/>
+					<div id="Seacap" class="tabcontent">
+						<div w3-include-html="includes/NotableProjects/SeacapDataCompiler.html"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- end page content -->
+		
+		<script>
+			w3.includeHTML();
+			document.getElementById("defaultOpen").click();
+		</script>
+	</body>
+</html>
+					
