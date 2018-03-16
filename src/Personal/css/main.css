@@ -16,28 +16,43 @@ body{
 }
 #bannerbg{
 	background:url('../images/bannerbg.jpg') no-repeat center center fixed;
-	height: 200px;
+	/*height: 300px;*/
+	height: 20%;
 }
 
 #bannerbg h1{
 	color: var(--light-color-1);
 	font-size: 48pt;
 	font-weight:bold;
-	padding-top: 4%;
 }
 
 #bannerbg #selfimg{
 	float:left;
-	height: 35%;
-	width: auto;
+	height: auto;
+	width: 70%;
+	/*padding-left: 1em;*/
+}
+
+#bannerquote{
+	color: var(--light-color-1);
+	background: linear-gradient(to right, var(--dark-color-2),var(--light-color-2),var(--dark-color-2));
+	font-size: 12pt;
+	font-style: italic;
+	text-align: center;
+	margin-top: -1em;
+	font-weight:bold;
+	margin-bottom: -1em;
 }
 
 div.content a{
 	color: #2650AA;
+	clear:right;
+	text-decoration: none;
 }
 
 div.content a:hover{
-	color: var(--dark-color-1);
+	color: var(--light-color-2);
+	text-decoration: underline;
 }
 
 div.downloadcollection li{
@@ -52,7 +67,7 @@ div.content h3{
 	color: var(--light-color-1);
 	font-size:20pt;
 	font-style:italic;
-	padding-left: 6%;
+	padding-left: 1em;
 }
 
 div.content h4.bioTagline{
@@ -81,38 +96,60 @@ div.contentheader h2{
 	font-size: 32pt;
 	font-weight: bold;
 }
+/*
+#navbg{
+	background-color: linear-gradient(to right, var(--light-color-1), var(--middle-color-1) );
+	width: 15%;
+	float:left;
+	/*position: absolute;*/
+	
+/*}*/
 
-.navbar-left{
-	border-radius: 0;
-	float: left;
-	height: 100%;
-	padding-left: 0;
-	padding-top: 0;
-	margin-left: 0;
-}
-
-.navbar-left .navbar-nav{
+.navbar{
 	background: linear-gradient(to right, var(--light-color-1), var(--middle-color-1) );
-	/*color: #000000;*/
-	text-decoration: none;
-	width: 160px;
+	font-weight:bold;
+	float:left;
+	height:100%;
+	overflow:hidden;
 }
 
-.navbar-left .navbar-nav > li{
-	float: none;
-	font-style: italic;
-	font-weight: bold;
-	padding: 15px;
-	text-align: right;
+.navbar > a{
+	text-alight:right;
+	text-decoration: none;
 }
 
-.navbar-left .navbar-nav > li a{
-	color: var(--dark-color-2);
+.navbar > a:hover{
+	background: linear-gradient(to right, var(--light-color-2), var(--light-color-1));
+}
+
+.navbar-small{
+	background: linear-gradient(to right, var(--middle-color-1), var(--light-color-1), var(--middle-color-1) );
+	font-weight:bold;
+	float:left;
+	height:100%;
+}
+
+.navbar-small > a{
+	text-alight:center;
 	text-decoration: none;
+}
+
+.navbar-small > a:hover{
+	background: linear-gradient(to right, var(--light-color-1), var(--light-color-2), var(--light-color-1));
+}
+
+#outercontainer{
+	padding-left:10%;
+	padding-right:10%;
+}
+
+div.pagecontent{
+	background: var(--light-color-1);
+	/*margin-left:20%;*/
 }
 
 div.pagecontentbg{
-	background: var(--light-color-1);
+	
 }
 
 div.tabcollection{
