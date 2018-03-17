@@ -2,48 +2,38 @@
 <html>
 	<head>
 		<title>Erik T. Keys</title>
-		<link rel="stylesheet" 
-		  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
-		  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
-		  crossorigin="anonymous">
-		<link rel="stylesheet" href="css/main.css"/>
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link rel="stylesheet" href="css/globalbannernav.css"/>
+		<link rel="stylesheet" href="css/pagecontent.css"/>
 
 
 		<script src="scripts/general.js"></script>
 		<script src="https://www.w3schools.com/lib/w3.js"></script>
-		<script src="https://apis.google.com/js/platform.js" async defer></script>
 	</head>
 	<body id="outercontainer">
 		<div w3-include-html="includes/banner.html"></div>
 		
 		<!-- page content -->
-		<div class="container pagecontentbg">
-			
+		<div class="w3-row pagecontent">
 			<div w3-include-html="includes/navbarleft.html"></div>
 			
 			<!-- content -->
-			<div class="row contentheader">
-				<div class="col-md-12 col-sm-12"><h2>Work History</h2></div>
-			</div>
-			<div class="row tabcollection">
-				<div class="col-md-12 col-sm-12">
-					<button id="defaultOpen" class="btn tab" onclick="openTabContent(event,'Present')">2012-Present</button>
-					<button class="btn tab" onclick="openTabContent(event,'20082012')">2008-2012</button>
+			<div class="w3-container w3-col s12 m10 content">
+				<div class="w3-row">
+					<div class="contentheader"><h2>Work Experience</h2></div>
 				</div>
-			</div>
-			
-			<div class="row content">
-				<div class="col-md-12 col-sm-12">
-					<br/>
+				<div class="w3-row tabcollection">
+					<button id="defaultOpen" class="tab" onclick="openTabContent(event,'Present')">2012-Present</button>
+					<button class="tab" onclick="openTabContent(event,'20082012')">2008-2012</button>
+				</div>
+				<div class="w3-row w3-margin-top">
 					<div id="Present" class="tabcontent">
 						<div w3-include-html="includes/WorkHistory/Present.html"></div>
 					</div>
-					
 					<div id="20082012" class="tabcontent">
 						<div w3-include-html="includes/WorkHistory/20082012.html"></div>
 					</div>
-						
-				</div>
+				<div>
 			</div>
 		</div>
 		
