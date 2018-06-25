@@ -2,110 +2,61 @@
 <html>
 	<head>
 		<title>Erik T. Keys</title>
-		<link rel="stylesheet" 
-		  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
-		  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
-		  crossorigin="anonymous">
-		<link rel="stylesheet" href="css/main.css"/>
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link rel="stylesheet" href="css/globalbannernav.css"/>
+		<link rel="stylesheet" href="css/pagecontent.css"/>
 
 
 		<script src="scripts/general.js"></script>
 		<script src="https://www.w3schools.com/lib/w3.js"></script>
-		<script src="https://apis.google.com/js/platform.js" async defer></script>
 	</head>
 	<body id="outercontainer">
 		<div w3-include-html="includes/banner.html"></div>
 		
 		<!-- page content -->
-		<div class="container pagecontentbg">
+		<div class="w3-row pagecontent">
 			
 			<div w3-include-html="includes/navbarleft.html"></div>
 			
 			<!-- content -->
-			<div class="row contentheader">
-				<div class="col-md-12 col-sm-12"><h2>Skills</h2></div>
-			</div>
-			<div class="row content">
-				<div class="col-md-6 col-sm-12">
-					<h3>Programming Languages</h3>
-					Advanced Proficency
-					<ul>
-						<li>C# (5.0, 6.0)</li>
-						<li>SQL: T-SQL</li>
-						<li>VB.NET</li>
-						<li>Visual Basic for Applications (VBA)</li>
-						<li>XML</li>
-					</ul>
-					Intermediate Proficency
-					<ul>
-						<li>C++ (98, 11)</li>
-						<li>HTML/CSS</li>
-						<li>SQL: Oracle</li>
-					</ul>
-					Novice Proficency
-					<ul>
-						<li>Bash scripting</li>
-						<li>Batch scripting</li>
-						<li>Java</li>
-					</ul>
+			<div class="w3-container w3-col s12 m10 content">
+				<div class="w3-row">
+					<div class="contentheader"><h2>Skills</h2></div>
 				</div>
-				<div class="col-md-6 col-sm-12">
-					<h3>Applications &amp; APIs</h3>
-					Advanced Proficency
-					<ul>
-						<li>Microsoft Access</li>
-					</ul>
-					Intermediate Proficency
-					<ul>
-						<li>.NET Framework (4.0 &amp; later)</li>
-						<li>Sql Server Management Studio (2008 R2 &amp; later)</li>
-						<li>Team Foundation Server [TFS]</li>
-						<li>Visual Studio</li>
-					</ul>
-					Novice Proficency
-					<ul>
-						<li>Eclipse</li>
-						<li>Entity Framework (6.0)</li>
-						<li>Git</li>
-						<li>make</li>
-						<li>Siemens NXOpen</li>
-					</ul>
+				
+				<!-- small screen arrangement, no column padding -->
+				<div class="w3-hide-medium w3-hide-large w3-col s12">
+					<div w3-include-html="includes/Skills/ProgrammingLanguages.html"></div>
+					<div w3-include-html="includes/Skills/ApplicationsAndAPIs.html"></div>
+					<div w3-include-html="includes/Skills/Concepts.html"></div>
+					<div w3-include-html="includes/Skills/SoftSkills.html"></div>
 				</div>
-			</div>
-			<div class="row content">
-				<div class="col-md-2 col-sm-2"></div>
-				<div class="col-md-5 col-sm-12">
-					<h3>Concepts</h3>
-					Intermediate Proficency
-					<ul>
-						<li>Database Architecture</li>
-						<li>OOP/SOLID programming</li>
-					</ul>
-					Novice Proficency
-					<ul>
-						<li>Agile Software Development</li>
-					</ul>
+				
+				<!-- not small screen arrangement, column padding (looks pretty) -->
+				<div class="w3-hide-small">
+					<div class="w3-row">
+						<div class="w3-col s12 m6 col-padding-right">
+							<div w3-include-html="includes/Skills/ProgrammingLanguages.html"></div>
+						</div>
+						<div class="w3-col s12 m6 col-padding-left">
+							<div w3-include-html="includes/Skills/ApplicationsAndAPIs.html"></div>
+						</div>
+					</div>
+					<div class="w3-row">
+						<div class="w3-col s12 m6 col-padding-right">
+							<div w3-include-html="includes/Skills/Concepts.html"></div>
+						</div>
+						<div class="w3-col s12 m6 col-padding-left">
+							<div w3-include-html="includes/Skills/SoftSkills.html"></div>
+						</div>
+					</div>
 				</div>
-				<div class="col-md-5 col-sm-12">
-					<h3>Soft Skills</h3>
-					<ul>
-						<li>Experience with working in a team envrionment</li>
-						<li>Experience as a project lead</li>
-					</ul>
-				</div>
-			</div>
+		  	</div>
 		</div>
 		<!-- end page content -->
 		
 		<script>
 			w3.includeHTML();
-			gapi.hangout.render('hangouts-placeholder', {
-							'topic': 'Contact from website',
-							'render': 'createhangout',
-							'app_type': 'ROOM_APP',
-							'invite_type': 'EMAIL',
-							'invites': ['e.t.keys@gmail.com']
-  							});
 		</script>
 	</body>
 </html>

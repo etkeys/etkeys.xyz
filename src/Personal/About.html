@@ -2,12 +2,10 @@
 <html>
 	<head>
 		<title>Erik T. Keys</title>
-		<link rel="stylesheet" 
-		  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
-		  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
-		  crossorigin="anonymous">
-		<link rel="stylesheet" href="css/main.css"/>
 
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link rel="stylesheet" href="css/globalbannernav.css"/>
+		<link rel="stylesheet" href="css/pagecontent.css"/>
 
 		<script src="scripts/general.js"></script>
 		<script src="https://www.w3schools.com/lib/w3.js"></script>
@@ -17,44 +15,45 @@
 		<div w3-include-html="includes/banner.html"></div>
 		
 		<!-- page content -->
-		<div class="container pagecontentbg">
-			
+		<div class="w3-row pagecontent">
 			<div w3-include-html="includes/navbarleft.html"></div>
-			
+
 			<!-- content -->
-			<div class="row contentheader">
-				<div class="col-md-12 col-sm-12"><h2>About &amp; Contact</h2></div>
-			</div>
-			<div class="row content">
-				<div class="col-md-6 col-sm-12">
-					<h3>Bio</h3>
-					<p>
-						<div id="myCurrentAge"></div>
-						Location: Newport News, Virginia, USA
-					</p>
-					
+			<div class="w3-container w3-col s12 m10 content">
+				<div class="w3-row">
+					<div class="contentheader"><h2>About &amp; Contact</h2></div>
+				</div>
 				
-					<div w3-include-html="includes/bio.html"></div>
-				</div>
-				<div class="col-md-6 col-sm-12">
-					<h3>Contact</h3>
-					<ul>
-						<li>Email (preferred)
+				<div class="w3-row">
+					<div class="w3-col s12 m6 col-padding-right">
+						<h3>Bio</h3>
+						<p>
+							<div id="myCurrentAge"></div>
+							Location: Newport News, Virginia, USA
+						</p>
+						<div w3-include-html="includes/bio.html"></div>
+					</div>
+				
+					<div class="w3-col s12 m6 col-padding-left">
+						<h3>Contact</h3>
 							<ul>
-								<li><a href="mailto:e.t.keys@gmail.com?Subject=[Contact%20from%20website]%20" target="_top">e.t.keys@gmail.com</a> (preferred)</li>
-								<li><a href="mailto:ekeys004@odu.edu?Subject=[Contact%20from%20website]%20" target="_top">ekeys004@odu.edu</a></li>
+								<li>Email (preferred)
+									<ul>
+										<li><a href="mailto:e.t.keys@gmail.com?Subject=[Contact%20from%20website]%20" target="_top">e.t.keys@gmail.com</a> (preferred)</li>
+										<li><a href="mailto:ekeys004@odu.edu?Subject=[Contact%20from%20website]%20" target="_top">ekeys004@odu.edu</a></li>
+									</ul>
+								</li>
+								<li>Phone
+									<ul>
+										<li>Cell (preferred): <a href="tel:757-285-5291">757-285-5291</a></li>
+										<li>Office: <a href="tel:757-688-4978">757-688-4978</a></li>
+									</ul>
+								</li>
+								<li>Google Hangouts ready! (email for hours)<br/><div id="hangouts-placeholder"></div></li>
 							</ul>
-						</li>
-						<li>Phone
-							<ul>
-								<li>Cell (preferred): <a href="tel:757-285-5291">757-285-5291</a></li>
-								<li>Office: <a href="tel:757-688-4978">757-688-4978</a></li>
-							</ul>
-						</li>
-						<li>Google Hangouts ready! (email for hours)<br/><div id="hangouts-placeholder"></div></li>
-					</ul>
+					</div>
 				</div>
-			</div>
+			</div>																			   
 		</div>
 		
 		<!-- end page content -->
