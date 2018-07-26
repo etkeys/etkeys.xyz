@@ -5,8 +5,13 @@ div.content a{
 }
 
 div.content a:hover{
-	color: var(--light-color-2);
 	text-decoration: underline;
+	
+	/*For IE*/
+	color: SandyBrown;
+	
+	/*For everyone else*/
+	color: var(--light-color-2);
 }
 
 div.content div.col-padding-right{
@@ -18,11 +23,17 @@ div.content div.col-padding-left{
 }
 
 div.content h3{
-	background: linear-gradient(to right, var(--dark-color-1), var(--light-color-2));
-	color: var(--light-color-1);
 	font-size:20pt;
 	font-style:italic;
 	padding-left: 1em;
+	
+	/*For IE*/
+	background: RoyalBlue;
+	color: OldLace;
+	
+	/*For everyone else*/
+	background: linear-gradient(to right, var(--dark-color-1), var(--light-color-2));
+	color: var(--light-color-1);
 }
 
 div.content h4.bioTagline{
@@ -60,32 +71,59 @@ div.downloadcollection li{
 }
 
 div.pagecontent{
+	
+	/*For IE*/
+	background: OldLace;
+	
+	/*For everyone else*/
 	background: var(--light-color-1);
 }
 
 div.tabcollection{
 	overflow:hidden;
+	
+	/*For IE*/
+	background: CornflowerBlue;
+	
+	/*For everyone else*/
 	background: linear-gradient(to right, var(--middle-color-1), var(--light-color-1));
 }
 
 div.tabcollection button{
 	background-color: inherit;
 	border-radius: 2em;
-	color: var(--dark-color-2);
     float: left;
     border: none;
     outline: none;
     cursor: pointer;
     padding: 10px 24px;
     transition: 0.3s;
+	
+	/*For IE*/
+	color: MidnightBlue;
+	
+	/*For everyone else*/
+	color: var(--dark-color-2);
 }
 
 div.tabcollection button.active {
+	
+	/*For IE*/
+	background: MidnightBlue;
+	color: SandyBrown;
+	
+	/*For everyone else*/
 	background: var(--dark-color-2);
 	color: var(--light-color-2);
 }
 
 div.tabcollection button:hover{
+	
+	/*For IE*/
+	background: SandyBrown;
+	color: MidnightBlue;
+	
+	/*For everyone else*/
 	background: var(--light-color-2);
 	color: var(--dark-color-2);
 }

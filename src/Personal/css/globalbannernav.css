@@ -7,6 +7,11 @@
 }
 
 body{
+	/*For IE*/
+	background: MidnightBlue;
+	color: MidnightBlue;
+	
+	/*For everyone else*/
 	background: var(--dark-color-2);
 	color: var(--dark-color-2);
 }
@@ -17,35 +22,51 @@ body{
 }
 
 #bannerbg h1{
-	color: var(--light-color-1);
 	font-size: 48pt;
 	font-weight:bold;
+	
+	/*For IE*/
+	color: OldLace;
+	
+	/*For everyone else*/
+	color: var(--light-color-1);
 }
 
 #bannerbg #selfimg{
 	float:left;
 	height: auto;
 	width: 70%;
-	/*padding-left: 1em;*/
 }
 
 #bannerquote{
-	color: var(--light-color-1);
-	background: linear-gradient(to right, var(--dark-color-2),var(--light-color-2),var(--dark-color-2));
 	font-size: 12pt;
 	font-style: italic;
 	text-align: center;
 	margin-top: -1em;
 	font-weight:bold;
 	margin-bottom: -1em;
+	
+	/*For IE*/
+	color: OldLace;
+	background: SandyBrown;
+	
+	/*For everyone else*/
+	color: var(--light-color-1);
+	background: linear-gradient(to right, var(--dark-color-2),var(--light-color-2),var(--dark-color-2));
 }
 
 .navbar{
-	background: linear-gradient(to right, var(--light-color-1), var(--middle-color-1) );
+	
 	font-weight:bold;
 	float:left;
 	height:100%;
 	overflow:hidden;
+	
+	/*For IE */
+	background: CornflowerBlue;
+	
+	/*For everyone else*/
+	background: linear-gradient(to right, var(--light-color-1), var(--middle-color-1) );
 }
 
 .navbar > a{
@@ -54,14 +75,24 @@ body{
 }
 
 .navbar > a:hover{
+	
+	/*For IE*/
+	background: SandyBrown;
+	
+	/*For everyone else*/
 	background: linear-gradient(to right, var(--light-color-2), var(--light-color-1));
 }
 
 .navbar-small{
-	background: linear-gradient(to right, var(--middle-color-1), var(--light-color-1), var(--middle-color-1) );
 	font-weight:bold;
 	float:left;
 	height:100%;
+	
+	/*For IE*/
+	background: CornflowerBlue;
+	
+	/*For everyone else*/
+	background: linear-gradient(to right, var(--middle-color-1), var(--light-color-1), var(--middle-color-1) );
 }
 
 .navbar-small > a{
@@ -70,6 +101,11 @@ body{
 }
 
 .navbar-small > a:hover{
+	
+	/*For IE*/
+	background: SandyBrown;
+	
+	/*For everyone else*/
 	background: linear-gradient(to right, var(--light-color-1), var(--light-color-2), var(--light-color-1));
 }
 
