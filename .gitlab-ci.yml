@@ -18,7 +18,7 @@ postit:
 #    - echo "${SSH_PRIVATE_KEY}" | ssh-add -
 #     - ssh-add <(echo "$SSH_PRIVATE_KEY" | base64 --decode)
 #     - rsync -auiv --delete -e "ssh" src/ 411orang@linux.cs.odu.edu:secure_html/
-     - rsync -auiv "ssh -i ${HOME}/.ssh/MyWebsite_deploy" src/ ekeys@linux.cs.odu.edu:.
+     - rsync -auiv -e "ssh -i ${HOME}/.ssh/MyWebsite_deploy" src/ ekeys@linux.cs.odu.edu:.
 
   
   tags:
