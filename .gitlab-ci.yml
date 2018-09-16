@@ -16,10 +16,10 @@ postit:
      - eval $(ssh-agent -s)
 #     - ssh-add -l
 #    - echo "${SSH_PRIVATE_KEY}" | ssh-add -
-     - ssh-add <(echo "$SSH_PRIVATE_KEY" | base64 --decode)
+#     - ssh-add <(echo "$SSH_PRIVATE_KEY" | base64 --decode)
 #     - rsync -auiv --delete -e "ssh" src/ 411orang@linux.cs.odu.edu:secure_html/
-#     - rsync -auiv --delete -e "ssh -i ${HOME}/.ssh/Teamwebsite_deploy" src/ 411orang@linux.cs.odu.edu:.
-     - rsync -auiv -e ssh src/ ekeys@linux.cs.odu.edu:.
+     - rsync -auiv "ssh -i ${HOME}/.ssh/MyWebsite_deploy" src/ ekeys@linux.cs.odu.edu:.
+
   
   tags:
     - keys-self
