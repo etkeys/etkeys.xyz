@@ -10,6 +10,12 @@ before_install:
 - eval `ssh-agent -s`
 - chmod 600 /tmp/do-amberreeve_rsa
 - ssh-add /tmp/do-amberreeve_rsa
+before_deploy:
+  provider: script
+  script:
+  - COMMIT=$(git log --oneline -n 1 | cut -d " " -f 1)
+  - BUILDTIME=$(date +"%F %R")
+  - sed -i 's/\$commit\$/'"$COMMIT"'/g; s/\$date\$/'"$BUILDTIME"'/g' src/includes/footer.html
 deploy:
   provider: script
   skip_cleanup: true

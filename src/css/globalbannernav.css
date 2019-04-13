@@ -4,6 +4,7 @@
 	--middle-color-1: #3B64D3;
 	--dark-color-1: #3552A3;
 	--dark-color-2: #121A2F;
+    --foot-grey: #888A85;
 }
 
 body{
@@ -54,6 +55,12 @@ body{
 	/*For everyone else*/
 	color: var(--light-color-1);
 	background: linear-gradient(to right, var(--dark-color-2),var(--light-color-2),var(--dark-color-2));
+}
+
+#footer{
+    color: var(--foot-grey);
+    font-style: italic;
+    font-size: 8pt;
 }
 
 .navbar{
