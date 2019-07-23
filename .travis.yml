@@ -18,4 +18,4 @@ deploy:
   provider: script
   skip_cleanup: true
   script:
-  - rsync -ruiv --delete-after -e ssh $TRAVIS_BUILD_DIR/src/ travisci@$DESTINATION_SERVER:/var/www/etkeys.org/
+  - rsync -ruiv --delete-after -e ssh $TRAVIS_BUILD_DIR/src/ travisci@$DESTINATION_SERVER:/var/www/etkeys.xyz/
