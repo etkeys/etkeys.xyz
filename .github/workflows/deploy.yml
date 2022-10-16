@@ -1,0 +1,25 @@
+
+name: DEPLOY
+on:
+  push:
+    branches:
+      - feature/github-actions
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: rsync deployments
+        uses: burnett01/rsync-deploymnets@5.2.1
+        with:
+          switches: -avz --delete-after
+          path: src/
+          remote_path: /var/www/etkeys.xyz/
+          remote_host: etkeys.xyz
+          remote_user: github
+          remote_key: ${{ secrets.DEPLOY_KEY }}
+            
+
