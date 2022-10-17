@@ -3,7 +3,7 @@ name: DEPLOY
 on:
   push:
     branches:
-      - master
+      - feature/github-actions
 
 jobs:
   deploy:
@@ -17,7 +17,7 @@ jobs:
           switches: -avz --delete-after
           path: src/
           remote_path: /var/www/etkeys.xyz/
-          remote_host: etkeys.xyz
+          remote_host: test.etkeys.xyz
           remote_user: github
           remote_key: ${{ secrets.DEPLOY_KEY }}
             
