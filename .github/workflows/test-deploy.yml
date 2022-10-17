@@ -11,6 +11,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - run: |
+          cp src/robots.test.txt src/robots.txt
+          rm src/robots.*.txt
+
       - name: rsync deployments
         uses: burnett01/rsync-deployments@5.2.1
         with:
