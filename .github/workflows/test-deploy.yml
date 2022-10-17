@@ -14,7 +14,7 @@ jobs:
       - name: rsync deployments
         uses: burnett01/rsync-deployments@5.2.1
         with:
-          switches: -avz --delete-after
+          switches: -ruiv --delete-after
           path: src/
           remote_path: /var/www/etkeys.xyz/
           remote_host: test.etkeys.xyz
