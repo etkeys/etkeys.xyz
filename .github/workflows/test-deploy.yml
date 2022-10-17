@@ -1,9 +1,9 @@
 
-name: DEPLOY
+name: DEPLOY (test)
 on:
   push:
-    branches:
-      - feature/github-actions
+    branches-ignore:
+      - master
 
 jobs:
   deploy:
