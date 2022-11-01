@@ -20,8 +20,8 @@ jobs:
         with:
           switches: -ruiv --delete-after
           path: src/
-          remote_path: /var/www/etkeys.xyz/
-          remote_host: etkeys.xyz
+          remote_path: /var/www/etkeys.me/
+          remote_host: etkeys.me
           remote_user: github
           remote_key: ${{ secrets.DEPLOY_KEY }}
             
