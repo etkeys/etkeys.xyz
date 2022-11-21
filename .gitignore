@@ -1,0 +1,2 @@
+.publish/
+src/**/.hugo_build.lock
