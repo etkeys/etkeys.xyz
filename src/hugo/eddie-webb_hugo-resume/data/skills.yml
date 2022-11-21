@@ -1,0 +1,36 @@
+
+- grouping: Languages
+  skills:
+    - C#
+    - SQL (T-SQL, SQLite)
+    - Python
+    - bash
+    - PowerShell
+    - HTML/CSS
+
+- grouping: Operating Systems, Tools, & APIs
+  skills:
+    - .NET Framework (4.0+), .NET Core (3.1)
+    - Entity Framework
+    - git
+    - Linux
+    - Visual Studio
+
+- grouping: Data Management
+  skills:
+    - name: Microsoft SQL Server
+      icon: msql_server
+    - SQLite
+    - YAML, JSON, XML
+
+- grouping: Platform Development & Administration
+  skills:
+    - Atlassian suite (Jira, Bitbucket, Bamboo, Confluence)
+    - Github
+    - Gitlab
+
+- grouping: Soft Skills
+  skills:
+    - Experience as a customer liaison
+    - Experience as a project lead
+    - Experience working in a team environment

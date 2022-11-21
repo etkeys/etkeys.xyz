@@ -1,0 +1,23 @@
+baseURL: ''
+languageCode: en-us
+title: Erik T. Keys
+theme: hugo-resume
+enableGitInfo: false
+
+params:
+  address: Newport News, VA
+  email: 'e.t.keys@gmail.com'
+  firstName: Erik
+  lastName: Keys
+  phone: 1-757-285-5291
+
+  profileImage: KeysE.self.png
+
+  showEducation: true
+  showExperience: true
+  showProjects: true
+  showSkills: true
+
+  handles:
+    - name: GitHub
+      link: https://github.com/etkeys

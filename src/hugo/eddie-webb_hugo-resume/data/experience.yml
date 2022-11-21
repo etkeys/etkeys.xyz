@@ -1,0 +1,34 @@
+
+- role: Software Engineer
+  company: Antech Systems, Inc.; Chesapeake, Virginia
+  range: Janurary 2019 - Present
+  summary:
+    - Team lead of development team responsible for released external and internal applications.
+    - Modified and patched existing software to correct errors, allow it to adapt to new hardware, or to improve its performance.
+    - Analyzed user needs and evolving software requirements to determine feasibility of design within time and cost constraints.
+    - Diagnosed and troubleshot user issues and issues during development.
+    - Provided tier 2 support for investigating customer trouble calls and inquiries about software usage.
+    - Developed and directed software system testing and validation procedures, programming, and documentation.
+    - Designed frameworks to support database integration with existing company tools.
+    - Ported applications to new platforms.
+    - Migrated application source code to different scm solutions.
+
+- role: Software Engineer & Database Architecth
+  company: Newport News Shipbuilding; Newport News, Virginia
+  range: April 2014 - December 2018
+  summary:
+  - Modified existing software to correct errors, allow it to adapt to new hardware, or to improve its performance.
+  - Analyzed user needs and software requirements to determine feasibility of design within time and cost constraints.
+  - Diagnosed and troubleshot user issues and issues during development.
+  - Developed and directed software system testing and validation procedures, programming, and documentation.
+  - Designed frameworks to support database integration with existing company tools.
+  - Ported applications to new platforms.
+
+- role: Computer Aided Drafting and Design Technician
+  company: Newport News Shipbuilding; Newport News, Virginia
+  range: December 2008 - April 2014
+  summary:
+    - Developed 3D models by interpreting engineer comments, 2D design chematics, written design requirements, and manufacturing comments.
+    - Worked with other functional groups to resolve mutual or specific design problems.
+    - Developed and documented new design and manufacturing techniques that resulted in time- and cost- savings with minimal impact to current product.
+    - Gathered varying quantities of design data, reviewed for correctness, and then submitted data to downstream customers. 
