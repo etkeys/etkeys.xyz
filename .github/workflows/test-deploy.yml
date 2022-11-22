@@ -9,14 +9,22 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repo
+        uses: actions/checkout@v3
 
-      - run: bash scripts/build.sh
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: latest
+          extended: true
 
-      - run: |
-          cp src/robots.test.txt .publish/robots.txt
+      - name: Build with Hugo
+        run: bash scripts/build.sh
 
-      - name: rsync deployments
+      - name: Copy appropriate robots.txt file
+        run: cp src/robots.test.txt .publish/robots.txt
+
+      - name: rsync deployment
         uses: burnett01/rsync-deployments@5.2.1
         with:
           switches: -ruiv --delete-after
