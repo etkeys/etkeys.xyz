@@ -1,4 +1,4 @@
-baseURL: 'https://etkeys.me'
+baseURL: 'https://test.etkeys.me'
 languageCode: en-us
 title: Erik T. Keys
 theme: hugo-resume
