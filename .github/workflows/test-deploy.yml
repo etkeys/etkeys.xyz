@@ -21,7 +21,7 @@ jobs:
           extended: true
 
       - name: Build with Hugo
-        run: bash scripts/build.sh
+        run: bash scripts/build.sh TEST
 
       - name: Copy appropriate robots.txt file
         run: cp src/robots.test.txt .publish/robots.txt
