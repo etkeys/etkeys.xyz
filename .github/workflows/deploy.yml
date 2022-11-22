@@ -9,17 +9,28 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
 
-      - run: |
-          cp src/robots.production.txt src/robots.txt
-          rm src/robots.*.txt
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: latest
+          extended: true
 
-      - name: rsync deployments
+      - name: Build with Hugo
+        run: bash scripts/build.sh PROD
+
+      - name: Copy appropriate robots.txt file
+        run: cp src/robots.production.txt .publish/robots.txt
+
+      - name: rsync deployment
         uses: burnett01/rsync-deployments@5.2.1
         with:
           switches: -ruiv --delete-after
-          path: src/
+          path: .publish/
           remote_path: /var/www/etkeys.me/
           remote_host: etkeys.me
           remote_user: github
