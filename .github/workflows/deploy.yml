@@ -53,6 +53,6 @@ jobs:
           switches: -ruiv --delete-after
           path: .publish/.
           remote_path: /var/www/etkeys.me/${{ env.REMOTE_DESTINATION_DIR_NAME }}/.
-          remote_host: web003
+          remote_host: ${{ secrets.REMOTE_HOST }}
           remote_user: github
           remote_key: ${{ secrets.DEPLOY_KEY }}
