@@ -1,39 +1,58 @@
 
-name: DEPLOY
+name: Build and deploy
 on:
   push:
-    branches:
-      - master
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Set up environment variables
+        run: |
+          echo "EndsWith=${{ endsWith(github.ref, '/master') }}"
+          if [ ${{ endsWith(github.ref, '/master') }} == true ]; then
+            echo "BUILD_ENV=production" >> $GITHUB_ENV
+            echo "REMOTE_DESTINATION_DIR_NAME=production" >> $GITHUB_ENV
+          else
+            echo "BUILD_ENV=non-production" >> $GITHUB_ENV
+            echo "REMOTE_DESTINATION_DIR_NAME=test" >> $GITHUB_ENV
+          fi
+
       - name: Checkout repo
         uses: actions/checkout@v3
         with:
           submodules: recursive
 
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
+        uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: latest
           extended: true
 
       - name: Build with Hugo
-        run: bash scripts/build.sh PROD
+        run: bash scripts/build.sh ${{ env.BUILD_ENV }}
 
       - name: Copy appropriate robots.txt file
-        run: cp src/robots.production.txt .publish/robots.txt
+        run: |
+          if [ "${{ env.BUILD_ENV }}" == "production" ]; then
+            cp src/robots.production.txt .publish/robots.txt
+          else
+            cp src/robots.test.txt .publish/robots.txt
+          fi
+
+      - name: Install Tailscale
+        uses: tailscale/github-action@v3
+        with:
+          oauth-client-id: ${{ secrets.TAILSCALE_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TAILSCALE_OAUTH_SECRET }}
+          tags: tag:ci
 
       - name: rsync deployment
-        uses: burnett01/rsync-deployments@5.2.1
+        uses: burnett01/rsync-deployments@7.0.2
         with:
           switches: -ruiv --delete-after
-          path: .publish/
-          remote_path: /var/www/etkeys.me/
-          remote_host: etkeys.me
+          path: .publish/.
+          remote_path: /var/www/etkeys.me/${{ env.REMOTE_DESTINATION_DIR_NAME }}/.
+          remote_host: web003
           remote_user: github
           remote_key: ${{ secrets.DEPLOY_KEY }}
-            
-

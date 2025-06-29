@@ -16,7 +16,7 @@ mkdir "${PUBLISH_DIR}"
 for d in "${HUGO_DIRS[@]}"; do
     cd "src/${d}" || exit
 
-    if [ "$1" == "PROD" ] ; then
+    if [ "$1" == "production" ] ; then
         sed -i "s;baseURL: '';baseURL: 'https://etkeys.me';" config.yml
     else
         sed -i "s;baseURL: '';baseURL: 'https://test.etkeys.me';" config.yml
