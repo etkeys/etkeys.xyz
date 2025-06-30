@@ -68,5 +68,5 @@ jobs:
         run: |
           rsync -ruiv --delete-after .publish/ github@${{ secrets.REMOTE_HOST }}:/var/www/etkeys.me/${{ env.REMOTE_DESTINATION_DIR_NAME }}/
         env:
-          RSYNC_RSH: "ssh -i id_deploy_key -o StrictHostKeyChecking=no"
+          RSYNC_RSH: "ssh -i ~/.ssh/id_deploy_key -o StrictHostKeyChecking=no"
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
