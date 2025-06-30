@@ -60,13 +60,13 @@ jobs:
       - name: Install SSH Key
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
+          echo "${{ secrets.DEPLOY_KEY2 }}" > ~/.ssh/id_deploy_key
+          chmod 600 ~/.ssh/id_deploy_key
           chmod 700 ~/.ssh
 
       - name: Deploy to remote server
         run: |
           rsync -ruiv --delete-after .publish/ github@${{ secrets.REMOTE_HOST }}:/var/www/etkeys.me/${{ env.REMOTE_DESTINATION_DIR_NAME }}/
         env:
-          RSYNC_RSH: "ssh -o StrictHostKeyChecking=no"
+          RSYNC_RSH: "ssh -i id_deploy_key -o StrictHostKeyChecking=no"
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
