@@ -9,7 +9,6 @@ jobs:
     steps:
       - name: Set up environment variables
         run: |
-          echo "EndsWith=${{ endsWith(github.ref, '/master') }}"
           if [ ${{ endsWith(github.ref, '/master') }} == true ]; then
             echo "BUILD_ENV=production" >> $GITHUB_ENV
             echo "REMOTE_DESTINATION_DIR_NAME=production" >> $GITHUB_ENV
@@ -47,16 +46,6 @@ jobs:
           oauth-secret: ${{ secrets.TAILSCALE_OAUTH_SECRET }}
           tags: tag:ci
 
-      # - name: rsync deployment
-      #   uses: burnett01/rsync-deployments@7.0.2
-      #   with:
-      #     switches: -ruiv --delete-after
-      #     path: .publish/.
-      #     remote_path: /var/www/etkeys.me/${{ env.REMOTE_DESTINATION_DIR_NAME }}/.
-      #     remote_host: ${{ secrets.REMOTE_HOST }}
-      #     remote_user: github
-      #     remote_key: ${{ secrets.DEPLOY_KEY }}
-
       - name: Install SSH Key
         run: |
           mkdir -p ~/.ssh
@@ -64,6 +53,8 @@ jobs:
           chmod 600 ~/.ssh/id_deploy_key
           chmod 700 ~/.ssh
 
+      # NOTE: env.REMOTE_DESTINATION_DIR_NAME is just a subdirectory path. The parent directory
+      #     is declared in the ssh key's rrsync command.
       - name: Deploy to remote server
         run: |
           rsync -ruiv --delete-after .publish/ github@${{ secrets.REMOTE_HOST }}:${{ env.REMOTE_DESTINATION_DIR_NAME }}/
