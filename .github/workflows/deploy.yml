@@ -1,39 +1,63 @@
 
-name: DEPLOY
+name: Build and deploy
 on:
   push:
-    branches:
-      - master
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Set up environment variables
+        run: |
+          if [ ${{ endsWith(github.ref, '/master') }} == true ]; then
+            echo "BUILD_ENV=production" >> $GITHUB_ENV
+            echo "REMOTE_DESTINATION_DIR_NAME=production" >> $GITHUB_ENV
+          else
+            echo "BUILD_ENV=non-production" >> $GITHUB_ENV
+            echo "REMOTE_DESTINATION_DIR_NAME=test" >> $GITHUB_ENV
+          fi
+
       - name: Checkout repo
         uses: actions/checkout@v3
         with:
           submodules: recursive
 
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
+        uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: latest
           extended: true
 
       - name: Build with Hugo
-        run: bash scripts/build.sh PROD
+        run: bash scripts/build.sh ${{ env.BUILD_ENV }}
 
       - name: Copy appropriate robots.txt file
-        run: cp src/robots.production.txt .publish/robots.txt
+        run: |
+          if [ "${{ env.BUILD_ENV }}" == "production" ]; then
+            cp src/robots.production.txt .publish/robots.txt
+          else
+            cp src/robots.test.txt .publish/robots.txt
+          fi
 
-      - name: rsync deployment
-        uses: burnett01/rsync-deployments@5.2.1
+      - name: Install Tailscale
+        uses: tailscale/github-action@v3
         with:
-          switches: -ruiv --delete-after
-          path: .publish/
-          remote_path: /var/www/etkeys.me/
-          remote_host: etkeys.me
-          remote_user: github
-          remote_key: ${{ secrets.DEPLOY_KEY }}
-            
+          oauth-client-id: ${{ secrets.TAILSCALE_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TAILSCALE_OAUTH_SECRET }}
+          tags: tag:ci
 
+      - name: Install SSH Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY_KEY2 }}" > ~/.ssh/id_deploy_key
+          chmod 600 ~/.ssh/id_deploy_key
+          chmod 700 ~/.ssh
+
+      # NOTE: env.REMOTE_DESTINATION_DIR_NAME is just a subdirectory path. The parent directory
+      #     is declared in the ssh key's rrsync command.
+      - name: Deploy to remote server
+        run: |
+          rsync -ruiv --delete-after .publish/ github-deploy@${{ secrets.REMOTE_HOST }}:${{ env.REMOTE_DESTINATION_DIR_NAME }}/
+        env:
+          RSYNC_RSH: "ssh -i ~/.ssh/id_deploy_key -o StrictHostKeyChecking=no"
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
